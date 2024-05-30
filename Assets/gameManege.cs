@@ -54,12 +54,15 @@ public class GameManager : MonoBehaviour
     /// <returns>移動可能な時 true</returns>
     bool MoveNumber(Vector2Int movefrom, Vector2Int moveto)
     {
-        // 動けないときはファルス
-        if (moveto.y < 0 || moveto.y >= field.GetLength(0))
-            return false;
 
-        if (moveto.x < 0 || moveto.x >= field.GetLength(1))
-            return false;
+
+        // 動けないときはファルス
+        //if (moveto.y < 0 || moveto.y >= field.GetLength(0))
+        //    return false;
+
+        //if (moveto.x < 0 || moveto.x >= field.GetLength(1))
+        //    return false;
+        if (moveto.y = )
 
         if (field[moveto.y, moveto.x]?.tag == "Box")
         {
@@ -109,12 +112,12 @@ public class GameManager : MonoBehaviour
         clearText.SetActive(false);
         map = new int[,]
         {
-            { 0, 0, 0, 0, 0, 0, 0, 3, 2 },
-            { 0, 1, 0, 0, 0, 0, 0, 0, 2 },
-            { 0, 2, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 2, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 2, 2, 2, 0, 0, 0, 3, 0 },
-            { 0, 3, 3, 3, 0, 0, 0, 0, 0 }
+            { 4, 4, 4, 4, 4, 4, 4, 3, 2 },
+            { 4, 1, 0, 0, 0, 0, 0, 0, 2 },
+            { 4, 0, 2, 0, 0, 0, 2, 0, 4 },
+            { 4, 2, 2, 2, 0, 0, 0, 0, 4 },
+            { 4, 3, 3, 3, 0, 0, 0, 3, 4 },
+            { 4, 4, 4, 4, 4, 4, 4, 4, 4 }
         };
 
         //  PrintArray();
@@ -147,7 +150,13 @@ public class GameManager : MonoBehaviour
                         Instantiate(storePrefab,
                         new Vector3(x, -1 * y, 0),
                         Quaternion.identity);
-                }   // 格納場所を出す   // 箱を見つけた
+                    // 格納場所を出す   // 箱を見つけた
+                }else if (map[y, x] == 4)
+                {
+                    GameObject instance=
+                        Instantiate(fens,new Vector3(x,-1*y, 0), Quaternion.identity);
+                    //フェンスを出す
+                }
             }
         }
 
